@@ -1,6 +1,7 @@
 package com.encryptionclass;
 
 import javafx.application.Platform;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -40,10 +41,7 @@ public class EncryptionProgram {
     }
 
     public String getKey() {
-        StringBuilder keyStringBuilder = new StringBuilder();
-        for (Character x : list) {
-            keyStringBuilder.append(x);
-        }
+       StringBuilder keyStringBuilder = new StringBuilder();
         keyStringBuilder.append("\n");
         for (Character x : shuffledList) {
             keyStringBuilder.append(x);
@@ -51,7 +49,7 @@ public class EncryptionProgram {
         return keyStringBuilder.toString();
     }
 
-    public String encrypt(String message) {
+    public String encrypt(@org.jetbrains.annotations.NotNull String message) {
         letters = message.toCharArray();
 
         for (int i = 0; i < letters.length; i++) {
@@ -70,7 +68,7 @@ public class EncryptionProgram {
         return encryptedMessage.toString();
     }
 
-    public String decrypt(String message) {
+    public String decrypt(@NotNull String message) {
         letters = message.toCharArray();
 
         for (int i = 0; i < letters.length; i++) {
@@ -89,7 +87,7 @@ public class EncryptionProgram {
         return decryptedMessage.toString();
     }
 
-    public void setKey(String key) {
+    public void setKey(@NotNull String key) {
         shuffledList.clear();
 
         char[] keyArr = key.toCharArray();
@@ -103,20 +101,19 @@ public class EncryptionProgram {
         File myObj = new File(fileName);
 
         if(myObj.createNewFile()){
-            System.out.println("File created" + myObj.getName());
+
         }else{
-            System.out.println("File already exists");
+           throw new Exception("File already exits");
         }
 
         try {
             FileWriter fileWriter = new FileWriter(myObj);
             fileWriter.write(getKey());
             fileWriter.close();
-            System.out.println("Key saved");
         } catch (IOException e){
-            System.out.println(e.getMessage());
+            System.err.println("Cannot write to file");
+            e.printStackTrace();
         }
-
         setFilePath(myObj.getAbsolutePath());
     }
 

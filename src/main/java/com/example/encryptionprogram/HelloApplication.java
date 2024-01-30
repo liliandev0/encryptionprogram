@@ -6,12 +6,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.util.LinkedHashSet;
-
+import org.jetbrains.annotations.NotNull;
 
 public class HelloApplication extends Application {
     private EncryptionProgram encryptionProgram;
@@ -23,7 +20,7 @@ public class HelloApplication extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(@NotNull Stage primaryStage) throws Exception {
         encryptionProgram = new EncryptionProgram();
 
         primaryStage.setTitle("Encryption Program");
@@ -72,7 +69,7 @@ public class HelloApplication extends Application {
             encryptionProgram.quit();
             primaryStage.close();
         });
-        GridPane.setConstraints(quitButton, 1, 4);
+        GridPane.setConstraints(quitButton, 0, 5);
 
         grid.getChildren().addAll(instructions, getKeyButton, inputTextField, encryptButton, decryptButton,
                 setKeyButton, resultTextArea, saveKeyButton,quitButton);
@@ -144,7 +141,7 @@ public class HelloApplication extends Application {
         });
 
         GridPane.setConstraints(confirmButton,1, 0);
-        
+
         gridPane.getChildren().addAll(fileTextArea, confirmButton, textArea);
 
         Scene scene = new Scene(gridPane, 300, 200);
