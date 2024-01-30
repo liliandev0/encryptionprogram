@@ -21,8 +21,8 @@ This is a simple encryption program written in Java. It allows users to encrypt 
 
 1. Clone the repository: git clone https://github.com/your-username/encryption-program.git
 2. Navigate to the project directory: cd encryption-program
-3. Compile the Java files: javac EncryptionProgram.java
-4. Run the program: java EncryptionProgram
+3. Compile the Java files: javac HelloApplication.java
+4. Run the program: java HelloApplication
 
 Usage
 Upon running the program, you'll be prompted with a menu where you can choose various actions:
